@@ -40,20 +40,17 @@ class GlideImageProvider : ImageProvider {
           .load(file)
           .error(R.drawable.nophoto)
           .placeholder(R.drawable.placeholder)
-          .thumbnail(IMAGE_QUALITY_1_PERCENT)
           .diskCacheStrategy(DiskCacheStrategy.NONE)
           .skipMemoryCache(true)
           .into(GlideDrawablePhotoViewAttacherTarget(imageView, PhotoViewAttacher(imageView)))
-
     }
     else {
 
       Glide.with(context)
-          .load(imageUrl)
+          .load("http://192.168.15.3/fotos/" + imageUrl)
           .asBitmap()
           .error(R.drawable.nophoto)
           .placeholder(R.drawable.placeholder)
-          .thumbnail(IMAGE_QUALITY_1_PERCENT)
           .diskCacheStrategy(DiskCacheStrategy.NONE)
           .skipMemoryCache(true)
           .into(object: BitmapImageViewTarget(imageView) {
