@@ -18,7 +18,7 @@ fun ViewGroup.inflate(layoutRes: Int): View {
 }
 
 fun Context.buildPradoGalleryIntent(imageUrls: List<String>,
-                                    imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
+                                    imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO, URL: String): Intent {
   val imageUrlsArrayList = when (imageUrls) {
     is ArrayList -> imageUrls
     else -> ArrayList(imageUrls)
@@ -26,6 +26,7 @@ fun Context.buildPradoGalleryIntent(imageUrls: List<String>,
   return Intent(this, PradoGalleryActivity::class.java)
       .putStringArrayListExtra(PradoGalleryActivity.EXTRA_LIST_ITEMS, imageUrlsArrayList)
       .putExtra(PradoGalleryActivity.EXTRA_IMAGE_PROVIDER, imageProviderType.name)
+      .putExtra(PradoGalleryActivity.URL, URL)
 }
 
 fun ImageView.centerInParent(relativeLayoutParams: RelativeLayout.LayoutParams) {

@@ -9,6 +9,6 @@ interface ImageProvider {
     PICASSO, GLIDE
   }
 
-  fun loadImage(context: Context, imageUrl: String, imageView: ImageView)
+  fun loadImage(context: Context, imageUrl: String, imageView: ImageView, URL: String)
   fun loadError(context: Context, imageView: ImageView)
 }

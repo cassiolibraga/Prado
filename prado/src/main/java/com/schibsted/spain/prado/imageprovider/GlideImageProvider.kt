@@ -27,10 +27,10 @@ class GlideImageProvider : ImageProvider {
   }
 
   override fun loadError(context: Context, imageView: ImageView) {
-    loadImage(context, "", imageView)
+    loadImage(context, "", imageView, "")
   }
 
-  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView) {
+  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, URL: String) {
 
     if (verifyIfImageExists(imageUrl)) {
 
@@ -47,7 +47,7 @@ class GlideImageProvider : ImageProvider {
     else {
 
       Glide.with(context)
-          .load("http://192.168.15.3/fotos/" + imageUrl)
+          .load(URL + imageUrl)
           .asBitmap()
           .error(R.drawable.nophoto)
           .placeholder(R.drawable.placeholder)

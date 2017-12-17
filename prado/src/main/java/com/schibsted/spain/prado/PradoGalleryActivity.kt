@@ -23,20 +23,22 @@ class PradoGalleryActivity : AppCompatActivity() {
     val EXTRA_LIST_INITIAL_INDEX = "EXTRA_LIST_INITIAL_INDEX"
     val EXTRA_LIST_FINAL_INDEX = "EXTRA_LIST_FINAL_INDEX"
     val EXTRA_IMAGE_PROVIDER = "EXTRA_IMAGE_PROVIDER"
+    val URL = "URL"
     val INITIAL_INDEX = 0
     private val BUNDLE_PAGE_NUMBER = "BUNDLE_PAGE_NUMBER"
 
     @JvmStatic
     @JvmOverloads
     fun buildPradoGalleryIntent(context: Context, imageUrls: List<String>,
-                                imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO): Intent {
-      return context.buildPradoGalleryIntent(imageUrls, imageProviderType)
+                                imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO, URL: String): Intent {
+      return context.buildPradoGalleryIntent(imageUrls, imageProviderType, URL)
     }
   }
 
   private var totalItems: Int = 0
   private var currentIndex: Int = 0
   private var items: List<String> = arrayListOf()
+  private var url: String = ""
   lateinit private var imageProviderType : ImageProvider.ImageProviderType
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +54,10 @@ class PradoGalleryActivity : AppCompatActivity() {
       imageProviderType = ImageProvider.ImageProviderType.valueOf(intent.getStringExtra(EXTRA_IMAGE_PROVIDER))
     } else {
       imageProviderType = ImageProvider.ImageProviderType.PICASSO
+    }
+
+    if (intent.hasExtra(URL)) {
+      url = intent.getStringExtra(URL)
     }
 
     setupGalleryViewPager()
@@ -73,7 +79,7 @@ class PradoGalleryActivity : AppCompatActivity() {
 
   private fun setupGalleryViewPager() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider())
+    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider(), URL)
 
     val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener {
       position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })
