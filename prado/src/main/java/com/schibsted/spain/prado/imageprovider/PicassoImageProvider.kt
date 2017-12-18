@@ -39,7 +39,7 @@ class PicassoImageProvider(context: Context) : ImageProvider {
     picasso.load(R.drawable.nophoto).into(imageView)
   }
 
-  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView) {
+  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, URL: String) {
     val photoViewAttacher = PhotoViewAttacher(imageView)
 
     picasso.load(imageUrl)

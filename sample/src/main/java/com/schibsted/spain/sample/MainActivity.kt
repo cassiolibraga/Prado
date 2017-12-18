@@ -31,11 +31,11 @@ class MainActivity : AppCompatActivity() {
     )
 
     launcherPicassoButton.setOnClickListener {
-      startActivity(buildPradoGalleryIntent(imageUrlsList))
+      startActivity(buildPradoGalleryIntent(imageUrlsList, ImageProvider.ImageProviderType.PICASSO,""))
     }
 
     launcherGlideButton.setOnClickListener {
-      startActivity(buildPradoGalleryIntent(imageUrlsList, ImageProvider.ImageProviderType.GLIDE))
+      startActivity(buildPradoGalleryIntent(imageUrlsList, ImageProvider.ImageProviderType.GLIDE, ""))
     }
   }
 }

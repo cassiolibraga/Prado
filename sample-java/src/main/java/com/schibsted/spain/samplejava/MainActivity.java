@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     launcherPicassoButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        startActivity(PradoGalleryActivity.buildPradoGalleryIntent(MainActivity.this, imageUrlsList));
+        startActivity(PradoGalleryActivity.buildPradoGalleryIntent(MainActivity.this, imageUrlsList, ""));
       }
     });
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         startActivity(PradoGalleryActivity.buildPradoGalleryIntent(MainActivity.this, imageUrlsList,
-            ImageProvider.ImageProviderType.GLIDE));
+            ImageProvider.ImageProviderType.GLIDE, ""));
       }
     });
   }
