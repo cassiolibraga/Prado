@@ -71,7 +71,7 @@ class GlideImageProvider : ImageProvider {
   fun verifyIfImageExists(file: String) : Boolean {
     val file = File(pathToSDCard(), file)
     Log.d("File", file.toString())
-    Log.d("Exite", file.exists().toString())
+    Log.d("Existe", file.exists().toString())
     return file.exists()
   }
 
