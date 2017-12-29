@@ -30,7 +30,7 @@ class GlideImageProvider : ImageProvider {
     loadImage(context, "", imageView, "")
   }
 
-  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, URL: String) {
+  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, Url: String) {
     Log.d("imageUrl", imageUrl)
     if (verifyIfImageExists(imageUrl)) {
 
@@ -45,9 +45,10 @@ class GlideImageProvider : ImageProvider {
           .into(GlideDrawablePhotoViewAttacherTarget(imageView, PhotoViewAttacher(imageView)))
     }
     else {
-      Log.d("Endereco", URL+imageUrl)
+      Log.d("URL", Url)
+      Log.d("Endereco", Url+imageUrl)
       Glide.with(context)
-          .load(URL + imageUrl)
+          .load(Url + imageUrl)
           .asBitmap()
           .error(R.drawable.nophoto)
           .placeholder(R.drawable.placeholder)
