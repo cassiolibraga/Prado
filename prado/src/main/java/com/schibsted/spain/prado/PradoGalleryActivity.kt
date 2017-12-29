@@ -30,8 +30,8 @@ class PradoGalleryActivity : AppCompatActivity() {
     @JvmStatic
     @JvmOverloads
     fun buildPradoGalleryIntent(context: Context, imageUrls: List<String>,
-                                imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO, URL: String): Intent {
-      return context.buildPradoGalleryIntent(imageUrls, imageProviderType, URL)
+                                imageProviderType: ImageProvider.ImageProviderType = ImageProvider.ImageProviderType.PICASSO, url: String): Intent {
+      return context.buildPradoGalleryIntent(imageUrls, imageProviderType, url)
     }
   }
 
@@ -79,7 +79,7 @@ class PradoGalleryActivity : AppCompatActivity() {
 
   private fun setupGalleryViewPager() {
     galleryViewPager.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider(), URL)
+    galleryViewPager.adapter = GalleryRecyclerAdapter(this, items, provideImageProvider(), url)
 
     val snapHelper = GravityPagerSnapHelper(Gravity.START, true, GravitySnapHelper.SnapListener {
       position -> pagerIndicatorNumber.text = providePagerIndicatorText(position) })

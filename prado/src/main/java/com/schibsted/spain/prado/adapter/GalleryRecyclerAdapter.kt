@@ -9,7 +9,7 @@ import com.schibsted.spain.prado.R
 import com.schibsted.spain.prado.extensions.inflate
 import com.schibsted.spain.prado.imageprovider.ImageProvider
 
-class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider, val URL: String)
+class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val imageProvider: ImageProvider, val url: String)
   : RecyclerView.Adapter<GalleryViewHolder>() {
 
   lateinit var imageView: ImageView
@@ -40,7 +40,7 @@ class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val 
     if (imageUrl.isNullOrEmpty()) {
       showError()
     } else {
-      loadImageFromUrl(imageUrl, URL)
+      loadImageFromUrl(imageUrl, url)
     }
   }
 
@@ -48,8 +48,8 @@ class GalleryRecyclerAdapter(val context: Context, val items: List<String>, val 
     imageProvider.loadError(context, imageView)
   }
 
-  private fun loadImageFromUrl(imageUrl: String, URL: String) {
-    imageProvider.loadImage(context, imageUrl, imageView, URL)
+  private fun loadImageFromUrl(imageUrl: String, url: String) {
+    imageProvider.loadImage(context, imageUrl, imageView, url)
   }
 }
 

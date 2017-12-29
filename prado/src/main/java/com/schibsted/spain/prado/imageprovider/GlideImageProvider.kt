@@ -6,8 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Environment
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -30,7 +28,7 @@ class GlideImageProvider : ImageProvider {
     loadImage(context, "", imageView, "")
   }
 
-  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, Url: String) {
+  override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, url: String) {
     Log.d("imageUrl", imageUrl)
     if (verifyIfImageExists(imageUrl)) {
 
@@ -45,10 +43,10 @@ class GlideImageProvider : ImageProvider {
           .into(GlideDrawablePhotoViewAttacherTarget(imageView, PhotoViewAttacher(imageView)))
     }
     else {
-      Log.d("URL", Url)
-      Log.d("Endereco", Url+imageUrl)
+      Log.d("URL", url)
+      Log.d("Endereco", url+imageUrl)
       Glide.with(context)
-          .load(Url + imageUrl)
+          .load(url + imageUrl)
           .asBitmap()
           .error(R.drawable.nophoto)
           .placeholder(R.drawable.placeholder)
