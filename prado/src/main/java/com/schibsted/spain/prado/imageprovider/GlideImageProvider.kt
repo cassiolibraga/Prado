@@ -31,7 +31,7 @@ class GlideImageProvider : ImageProvider {
   }
 
   override fun loadImage(context: Context, imageUrl: String, imageView: ImageView, URL: String) {
-
+    Log.d("imageUrl", imageUrl)
     if (verifyIfImageExists(imageUrl)) {
 
       val file = File(pathToSDCard(), imageUrl)
@@ -45,7 +45,7 @@ class GlideImageProvider : ImageProvider {
           .into(GlideDrawablePhotoViewAttacherTarget(imageView, PhotoViewAttacher(imageView)))
     }
     else {
-
+      Log.d("Endereco", URL+imageUrl)
       Glide.with(context)
           .load(URL + imageUrl)
           .asBitmap()
@@ -72,11 +72,7 @@ class GlideImageProvider : ImageProvider {
   fun verifyIfImageExists(file: String) : Boolean {
     val file = File(pathToSDCard(), file)
     Log.d("File", file.toString())
-    if (file.exists()) {
-      return true
-    }
-
-    return false
+    return file.exists()
   }
 
   fun pathToSDCard() : String {
